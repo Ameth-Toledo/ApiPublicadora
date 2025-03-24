@@ -97,7 +97,6 @@ func sendNotificationToAPI(apiURL, message string) error {
 	body, _ := ioutil.ReadAll(resp.Body)
 	log.Printf("API Response: %s", body)
 
-	// Check if the status code is 201 for created resources
 	if resp.StatusCode != http.StatusCreated {
 		return fmt.Errorf("API returned non-201 status: %d", resp.StatusCode)
 	}
@@ -111,7 +110,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	apiURL := "http://localhost:8088/send-notification"
+	apiURL := "http://52.23.145.19:8088/send-notification"
 	log.Println("Listening for messages...")
 
 	server.StartConsumer(apiURL)
